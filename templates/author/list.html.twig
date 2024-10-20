@@ -1,0 +1,29 @@
+{%if authors is empty%}
+<h1>le tableau est vide</h1>
+{%endif%}
+{%if authors is null%}
+<h1>le tableau est null</h1>
+{%endif%}
+{%set nb_bo=0%}
+<table border=1>
+<tr>
+<th>id</th>
+<th>picture</th>
+<th>username</th>
+<th>email</th>
+<th>nb_books</th>
+</tr>
+<tr>
+{%for author in authors%}
+<td>{{author.id}}</td>
+<td><img src="{{author.picture}}"></td>
+<td>{{author.username|upper()}}</td>
+<td>{{author.email}}</td>
+ <td>{{author.nb_books}}</td> 
+</tr>
+{%set nb_bo=nb_bo+author.nb_books%}
+{%endfor%}
+</table>
+
+<h1>le nombre de auteurs est :{{authors|length()}}</h1>
+<h1>le nombre de book est :{{nb_bo}}</h1>
